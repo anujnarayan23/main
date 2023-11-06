@@ -1,0 +1,16 @@
+name: Main Workflow
+
+on:
+  workflow_run:
+    workflows: ["Run Main Workflow"]
+    types:
+      - completed
+
+jobs:
+  display-content:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Display File Content
+        run: |
+          cat ${{ github.event.inputs.file_path }}
