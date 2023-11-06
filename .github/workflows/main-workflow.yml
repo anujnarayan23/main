@@ -1,0 +1,19 @@
+# This is the main workflow which will be used by BU repo
+
+name: Main Workflow
+
+on:
+  workflow_run:
+    workflows: ["Run Main Workflow"]
+    types:
+      - completed
+
+jobs:
+  display-content:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Display File Content
+        run: |
+          file_path="${{ github.event.workflow_run.workflow_file_path }}"
+          cat "$file_path"
