@@ -1,10 +1,7 @@
 name: Main Workflow
 
 on:
-  workflow_run:
-    workflows: ["Input Workflow"]
-    types:
-      - completed
+  workflow_call:        
 
 jobs:
   display-content:
