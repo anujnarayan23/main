@@ -1,7 +1,11 @@
 name: Main Workflow
 
 on:
-  workflow_call:        
+  workflow_call:
+    inputs:
+      file_path:
+        description: 'Path to the file to be processed'
+        required: true
 
 jobs:
   display-content:
@@ -10,4 +14,4 @@ jobs:
     steps:
       - name: Display File Content
         run: |
-          cat ${{ github.event.inputs.file_path }}
+          cat ${{ inputs.file_path }}
